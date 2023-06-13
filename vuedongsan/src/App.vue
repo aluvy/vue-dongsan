@@ -1,4 +1,5 @@
 <template>
+  
   <div class="black-bg" v-if="모달창열렸니==1">
     <div class="white-bg">
       <h4>상세페이지</h4>
@@ -11,24 +12,25 @@
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
   </div>
 
-  <div v-for="(a,i) in products" :key="i">
-    <img :src="require(`@/assets/room${i}.jpg`)" class="room-img">
-    <h4 @click="모달창열렸니=1">{{ a }}</h4>
-    <p>40 만원</p>
-    <button @click="신고수[i]++">허위매물신고</button> <span>신고수: {{ 신고수[i] }}</span>
+  <div v-for="(a,i) in 원룸들" :key="i">
+    <img :src="a.image" class="room-img">
+    <h4 @click="모달창열렸니=1">{{ a.title }}</h4>
+    <p>{{ a.content }}</p>
+    <p>{{ a.price }}원</p>
   </div>
+
 </template>
 
 <script>
+import data from './assets/oneroom';
 
 export default {
   name: 'App',
   data(){
     return {
       메뉴들: ['Home', 'Shop', 'About'],
-      products: ['역삼동원룸', '천호동원룸', '마포구원룸'],
-      신고수: [0, 0, 0],
       모달창열렸니: 0,  // 0:닫힘, 1:열림
+      원룸들: data,
     }
   },
   methods: {
