@@ -8,7 +8,8 @@
 
   <DiscountBanner />
 
-  <ProductCard v-for="(a,i) in 원룸들" :key="i" :a="a" :i="i"  />
+  <!-- <ProductCard v-for="(a,i) in 원룸들" :key="i" :a="a" :i="i" /> -->
+  <ProductCard v-for="(a,i) in 원룸들" :key="i" :원룸="원룸들[i]" />
 
 </template>
 
@@ -22,6 +23,7 @@ export default {
   name: 'App',
   data(){
     return {
+      오브젝트: {name: 'kim', age: 20},
       메뉴들: ['Home', 'Shop', 'About'],
       모달창열렸니: 0,  // 0:닫힘, 1:열림
       원룸들: data,
@@ -50,7 +52,7 @@ div{box-sizing:border-box;}
   color: #2c3e50;
 }
 
-.menu{background:darkslateblue; padding:15px; border-radius:5px;}
+.menu{background:darkslateblue; padding:15px;}
 .menu a{color:#fff; padding:10px;}
 
 .room-img{width:100%; margin-top:40px;}
