@@ -1,9 +1,19 @@
 <template>
+
+  <div v-if=" 1==2 ">
+    안녕하세요
+  </div>
+  <div v-else>
+    위에거가 참이 아니면 실행해주세요
+  </div>
+
   
   <div class="black-bg" v-if="모달창열렸니==1">
     <div class="white-bg">
-      <h4>상세페이지</h4>
-      <p>상세페이지 내용</p>
+      <img :src="원룸들[누른거].image" class="room-img">
+      <h4>{{ 원룸들[누른거].title }}</h4>
+      <p>{{ 원룸들[누른거].content }}</p>
+      <p>{{ 원룸들[누른거].price }}</p>
       <button @click="모달창열렸니=0">닫기</button>
     </div>
   </div>
@@ -12,9 +22,11 @@
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
   </div>
 
+  <DiscountBanner />
+
   <div v-for="(a,i) in 원룸들" :key="i">
     <img :src="a.image" class="room-img">
-    <h4 @click="모달창열렸니=1">{{ a.title }}</h4>
+    <h4 @click="모달창열렸니=1; 누른거=i;">{{ a.title }}</h4>
     <p>{{ a.content }}</p>
     <p>{{ a.price }}원</p>
   </div>
@@ -23,6 +35,7 @@
 
 <script>
 import data from './assets/oneroom';
+import DiscountBanner from './DiscountBanner.vue';
 
 export default {
   name: 'App',
@@ -31,11 +44,14 @@ export default {
       메뉴들: ['Home', 'Shop', 'About'],
       모달창열렸니: 0,  // 0:닫힘, 1:열림
       원룸들: data,
+      누른거: 0,
     }
   },
   methods: {
   },
   components: {
+    DiscountBanner : DiscountBanner,
+    // DiscountBanner,
   }
 }
 </script>
