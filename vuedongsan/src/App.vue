@@ -1,22 +1,6 @@
 <template>
 
-  <div v-if=" 1==2 ">
-    안녕하세요
-  </div>
-  <div v-else>
-    위에거가 참이 아니면 실행해주세요
-  </div>
-
-  
-  <div class="black-bg" v-if="모달창열렸니==1">
-    <div class="white-bg">
-      <img :src="원룸들[누른거].image" class="room-img">
-      <h4>{{ 원룸들[누른거].title }}</h4>
-      <p>{{ 원룸들[누른거].content }}</p>
-      <p>{{ 원룸들[누른거].price }}</p>
-      <button @click="모달창열렸니=0">닫기</button>
-    </div>
-  </div>
+  <ModalDetail :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
 
   <div class="menu">
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
@@ -35,7 +19,8 @@
 
 <script>
 import data from './assets/oneroom';
-import DiscountBanner from './DiscountBanner.vue';
+import ModalDetail from './components/ModalDetail.vue';
+import DiscountBanner from './components/DiscountBanner.vue';
 
 export default {
   name: 'App',
@@ -51,7 +36,7 @@ export default {
   },
   components: {
     DiscountBanner : DiscountBanner,
-    // DiscountBanner,
+    ModalDetail : ModalDetail,
   }
 }
 </script>
@@ -72,8 +57,4 @@ div{box-sizing:border-box;}
 .menu a{color:#fff; padding:10px;}
 
 .room-img{width:100%; margin-top:40px;}
-
-/* modal */
-.black-bg{position:fixed; padding:20px; width:100%; height:100%; background:rgba(0,0,0, 0.5);}
-.white-bg{width:100%; background:#fff; border-radius:8px; padding:20px;}
 </style>
