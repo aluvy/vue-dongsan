@@ -8,12 +8,7 @@
 
   <DiscountBanner />
 
-  <div v-for="(a,i) in 원룸들" :key="i">
-    <img :src="a.image" class="room-img">
-    <h4 @click="모달창열렸니=1; 누른거=i;">{{ a.title }}</h4>
-    <p>{{ a.content }}</p>
-    <p>{{ a.price }}원</p>
-  </div>
+  <ProductCard v-for="(a,i) in 원룸들" :key="i" :a="a" :i="i"  />
 
 </template>
 
@@ -21,6 +16,7 @@
 import data from './assets/oneroom';
 import ModalDetail from './components/ModalDetail.vue';
 import DiscountBanner from './components/DiscountBanner.vue';
+import ProductCard from './components/ProductCard.vue';
 
 export default {
   name: 'App',
@@ -37,6 +33,7 @@ export default {
   components: {
     DiscountBanner : DiscountBanner,
     ModalDetail : ModalDetail,
+    ProductCard : ProductCard,
   }
 }
 </script>
