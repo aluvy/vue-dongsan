@@ -1,6 +1,6 @@
 <template>
 
-  <ModalDetail :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
+  <ModalDetail :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" @modalClose="모달창열렸니=0;" />
 
   <div class="menu">
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
@@ -8,8 +8,7 @@
 
   <DiscountBanner />
 
-  <!-- <ProductCard v-for="(a,i) in 원룸들" :key="i" :a="a" :i="i" /> -->
-  <ProductCard v-for="(a,i) in 원룸들" :key="i" :원룸="원룸들[i]" />
+  <ProductCard @openModal="모달창열렸니=1; 누른거=$event;" v-for="(a,i) in 원룸들" :key="i" :원룸="원룸들[i]" />
 
 </template>
 
