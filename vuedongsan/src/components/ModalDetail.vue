@@ -23,6 +23,7 @@ export default {
   },
   watch: {
     month(a, b){  // 감시할 데이터 이름으로 함수를 만든다. (a:변경후 데이터, b:변경 전 데이터)
+      console.log('watch month');
       if(a >= 13 ){
         alert("경고");
         this.month=b;
@@ -42,7 +43,13 @@ export default {
     closeModal(){
       this.$emit('closeModal');
     }
-  }
+  },
+  beforeUpdate(){
+    if (this.month <= 2){
+      alert('2개월은 너무 적음.. 안팝니다');
+      this.month = 3;
+    }
+  },
 }
 </script>
 

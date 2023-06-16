@@ -6,7 +6,7 @@
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
   </div>
 
-  <DiscountBanner v-if="showDiscountBanner == true" />
+  <DiscountBanner v-if="showDiscountBanner == true" :showDiscountNumber="showDiscountNumber" />
 
   <button type="button" @click="sortBack">전체</button>
   <button type="button" @click="priceSortDesc">가격 내림차순 정렬</button>
@@ -35,6 +35,7 @@ export default {
       원룸들: data,
       누른거: 0,
       showDiscountBanner: true,
+      showDiscountNumber: 30,
     }
   },
   methods: {
@@ -60,11 +61,15 @@ export default {
     }
   },
 
-  // App.vue 가 mount 되었을 때 실행
+  // @숙제1. 페이지 로드 시 30% 할인 배너의 30 수치를 1초마다 감소시킨다.
   mounted(){
-    setTimeout(() => {
-      this.showDiscountBanner = false;
-    }, 3000);
+    let Discount = setInterval(() => {
+      if( this.showDiscountNumber <= 1 ){
+        clearInterval(Discount);
+        this.showDiscountBanner=false;
+      }
+      this.showDiscountNumber--;
+    }, 1000);
   },
 
   components: {
