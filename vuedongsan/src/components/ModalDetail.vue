@@ -32,6 +32,10 @@ export default {
          alert("문자 입력 금지");
          this.month=b;
       }
+      if (this.month <= 2){
+        alert('2개월은 너무 적음.. 안팝니다');
+        this.month = 3;
+      }
     }
   },
   props: {
@@ -44,12 +48,12 @@ export default {
       this.$emit('closeModal');
     }
   },
-  beforeUpdate(){
-    if (this.month <= 2){
-      alert('2개월은 너무 적음.. 안팝니다');
-      this.month = 3;
-    }
-  },
+  // beforeUpdate(){
+  //   if (this.month <= 2){
+  //     alert('2개월은 너무 적음.. 안팝니다');
+  //     this.month = 3;
+  //   }
+  // },
 }
 </script>
 

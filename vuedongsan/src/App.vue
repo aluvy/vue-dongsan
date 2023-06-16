@@ -8,10 +8,12 @@
 
   <DiscountBanner v-if="showDiscountBanner == true" :showDiscountNumber="showDiscountNumber" />
 
-  <button type="button" @click="sortBack">전체</button>
-  <button type="button" @click="priceSortDesc">가격 내림차순 정렬</button>
-  <button type="button" @click="priceSortAsc">가격 오름차순 정렬</button>
-  <button type="button" @click="ProductSort">가나다순 정렬</button>
+  <div class="sort_wrap">
+    <button type="button" @click="sortBack">전체</button>
+    <button type="button" @click="priceSortDesc">가격 내림차순 정렬</button>
+    <button type="button" @click="priceSortAsc">가격 오름차순 정렬</button>
+    <button type="button" @click="ProductSort">가나다순 정렬</button>
+  </div>
   
 
   <ProductCard @openModal="모달창열렸니=1; 누른거=$event;" v-for="(a,i) in 원룸들" :key="i" :원룸="원룸들[i]" />
@@ -96,4 +98,6 @@ div{box-sizing:border-box;}
 .menu a{color:#fff; padding:10px;}
 
 .room-img{width:100%; margin-top:40px;}
+
+.sort_wrap{padding:20px 0 0;}
 </style>
