@@ -6,7 +6,7 @@
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>
   </div>
 
-  <DiscountBanner />
+  <DiscountBanner v-if="showDiscountBanner == true" />
 
   <button type="button" @click="sortBack">전체</button>
   <button type="button" @click="priceSortDesc">가격 내림차순 정렬</button>
@@ -34,6 +34,7 @@ export default {
       원룸들오리지널: [...data],
       원룸들: data,
       누른거: 0,
+      showDiscountBanner: true,
     }
   },
   methods: {
@@ -52,15 +53,20 @@ export default {
     },
     ProductSort(){
       this.원룸들.sort(function(a, b){
-        if(a.title.toLowerCase() > b.title.toLowerCase())
-          return 1;
-        else if(a.title.toLowerCase() < b.title.toLowerCase())
-          return -1;
-        else
-          return 0;
+        if(a.title.toLowerCase() > b.title.toLowerCase())       return 1;
+        else if(a.title.toLowerCase() < b.title.toLowerCase())  return -1;
+        else  return 0;
       });
     }
   },
+
+  // App.vue 가 mount 되었을 때 실행
+  mounted(){
+    setTimeout(() => {
+      this.showDiscountBanner = false;
+    }, 3000);
+  },
+
   components: {
     DiscountBanner : DiscountBanner,
     ModalDetail : ModalDetail,
