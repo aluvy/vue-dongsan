@@ -5,7 +5,6 @@
       <h4>{{ 원룸들[누른거].title }}</h4>
       <p>{{ 원룸들[누른거].content }}</p>
       <div>개월 수 : <input type="text" v-model.number="month"></div>
-      <textarea v-model="month"></textarea>
       <p>[{{month}}개월 선택] {{ 원룸들[누른거].price * month }}원</p>
       <button @click="closeModal">닫기</button>
     </div>
