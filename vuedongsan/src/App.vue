@@ -1,6 +1,6 @@
 <template>
 
-  <ModalDetail :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" @modalClose="모달창열렸니=0;" />
+  <ModalDetail :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" @closeModal="모달창열렸니=0;" />
 
   <div class="menu">
     <a v-for="(a,i) in 메뉴들" :key="i">{{a}}</a>

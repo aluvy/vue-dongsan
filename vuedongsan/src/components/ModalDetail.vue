@@ -5,7 +5,7 @@
       <h4>{{ 원룸들[누른거].title }}</h4>
       <p>{{ 원룸들[누른거].content }}</p>
       <p>{{ 원룸들[누른거].price }}</p>
-      <button @click="modalClose">닫기</button>
+      <button @click="closeModal">닫기</button>
     </div>
   </div>
 </template>
@@ -19,8 +19,8 @@ export default {
     모달창열렸니: Number,
   },
   methods: {
-    modalClose(){
-      this.$emit('modalClose');
+    closeModal(){
+      this.$emit('closeModal');
     }
   }
 }
